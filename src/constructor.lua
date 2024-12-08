@@ -5,7 +5,6 @@
 ---@field get_str_size fun(str:string):number
 
 luargv.argslist = arg
-luargv.decrementer = 2
 if string then
     luargv.substr_func = string.sub
     luargv.get_str_size = string.len

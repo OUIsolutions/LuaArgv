@@ -1,9 +1,9 @@
 ---@class Argv
 ---@field arg_exist fun(arg:string):boolean
 luargv.arg_exist = function(arg_value)
-    local size = private_luargv.get_total_args_size()
+    local size = luargv.get_total_args_size()
     for i = 1, size do
-        local current = private_luargv.get_arg(i)
+        local current = luargv.get_arg_by_index(i)
         if current == arg_value then
             return true
         end
@@ -13,14 +13,35 @@ end
 
 ---@class Argv
 ---@field get_total_args_size fun():number
-luargv.get_total_args_size = function(self_obj)
-    local raw_size = private_luargv.get_array_size(luargv.argslist)
-    return raw_size + luargv.decrementer
+luargv.get_total_args_size = function()
+    if luargv.argslist == nil then
+        return 0
+    end
+
+    local i = -3
+    local count = 0
+    while true do
+        local current = luargv.argslist[i]
+        if current then
+            count = count + 1
+        end
+        if i > 0 and current == nil then
+            return count
+        end
+        i = i + 1
+    end
 end
 
 
 ---@class Argv
----@field get_arg fun(index:number):string
-luargv.get_arg = function(index)
-    return luargv.argslist[index - luargv.decrementer]
+---@field get_arg_by_index fun(index:number):string
+luargv.get_arg_by_index = function(index)
+    local decrementer = 0
+    while true do
+        if luargv.argslist[decrementer] == nil then
+            break
+        end
+        decrementer = decrementer - 1
+    end
+    return luargv.argslist[index + decrementer]
 end
