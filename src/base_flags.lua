@@ -8,42 +8,41 @@ private_luargv.get_formmated_flag_if_its_a_flag = function(current_arg)
         if private_luargv.starts_with(current_arg, current_flag) then
             local current_flag_size = luargv.get_str_size(current_flag)
             if current_flag_size >= chose_flag_size then
-                chose_flag_size = chose_flag_size
+                chose_flag_size = current_flag_size
             end
         end
     end
     -- means its a flag
     if chose_flag_size > 0 then
         local args_size = luargv.get_str_size(current_arg)
-        return luargv.substr_func(current_arg, chose_flag_size, args_size)
+        return luargv.substr_func(current_arg, chose_flag_size + 1, args_size)
     end
-    return chose_flag_size
+    return nil
 end
 
----@class Argv
----@field get_flag_args fun(flag_name:string):string[],number
-luargv.get_flag_args = function(flag_name)
+---@class PrivateArgv
+---@field get_flag_args fun(flags:string[]):string[],number
+private_luargv.get_flag_args = function(flags)
     local args_size = luargv.get_total_args_size()
-    local found_position = 0
+    local founds = {}
+    local founds_size = 0
+    local capturing_flags = false
 
     for i = 1, args_size do
         local current = luargv.get_arg_by_index(i)
         local possible_flag = private_luargv.get_formmated_flag_if_its_a_flag(current)
         if possible_flag then
-            found_position = i
-            break
+            if private_luargv.is_inside(flags, possible_flag) then
+                capturing_flags = true
+            else
+                capturing_flags = false
+            end
+        end
+        if capturing_flags and not possible_flag then
+            founds_size = founds_size + 1
+            founds[founds_size] = current
         end
     end
-    local founds = {}
-    local founds_size = 0
-    for i = found_position, args_size do
-        local current = luargv.get_arg_by_index(i)
-        local possible_flag = private_luargv.get_formmated_flag_if_its_a_flag(current)
-        if possible_flag then
-            break
-        end
-        founds_size = founds_size + 1
-        founds[founds_size] = current
-    end
+
     return founds, founds_size
 end

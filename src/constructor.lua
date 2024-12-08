@@ -5,7 +5,7 @@
 ---@field get_str_size fun(str:string):number
 ---@field flag_identifiers string[]
 luargv.argslist = arg
-luargv.flag_identifiers = { "--", "-" }
+luargv.flag_identifiers = { "-", "--" }
 if string then
     luargv.substr_func = string.sub
     luargv.get_str_size = string.len

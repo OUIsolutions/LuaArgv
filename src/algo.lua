@@ -20,3 +20,15 @@ private_luargv.get_array_size = function(array)
     end
     return count
 end
+
+---@class PrivateArgv
+---@field is_inside fun(array:table,item:any):number
+private_luargv.is_inside = function(array, item)
+    local size = private_luargv.get_array_size(array)
+    for i = 1, size do
+        if array[i] == item then
+            return true
+        end
+    end
+    return false
+end
