@@ -20,9 +20,9 @@ private_luargv.get_formmated_flag_if_its_a_flag = function(current_arg)
     return nil
 end
 
----@class PrivateArgv
+---@class Argv
 ---@field get_flag_args fun(flags:string[]):string[],number
-private_luargv.get_flag_args = function(flags)
+luargv.get_flag_args = function(flags)
     local args_size = luargv.get_total_args_size()
     local founds = {}
     local founds_size = 0
@@ -45,4 +45,21 @@ private_luargv.get_flag_args = function(flags)
     end
 
     return founds, founds_size
+end
+
+---@class Argv
+---@field flags_exist fun(flags:string[]):string[],boolean
+luargv.flags_exist = function(flags)
+    local args_size = luargv.get_total_args_size()
+
+    for i = 1, args_size do
+        local current = luargv.get_arg_by_index(i)
+        local possible_flag = private_luargv.get_formmated_flag_if_its_a_flag(current)
+        if possible_flag then
+            if private_luargv.is_inside(flags, possible_flag) then
+                return true
+            end
+        end
+    end
+    return false
 end
