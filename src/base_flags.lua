@@ -63,3 +63,13 @@ luargv.flags_exist = function(flags)
     end
     return false
 end
+
+---@class Argv
+---@field get_first_flag_value_or_default fun(flags:string[],default:string):string
+luargv.get_first_flag_value_or_default = function(flags, default)
+    local flags, size = luargv.get_flag_args(flags)
+    if size == 0 then
+        return default
+    end
+    return flags[1]
+end
