@@ -23,8 +23,6 @@ end
 ---@class Argv
 ---@field get_flag_args fun(flag_name:string):string[],number
 luargv.get_flag_args = function(flag_name)
-    local founds = {}
-    local founds_size = 0
     local args_size = luargv.get_total_args_size()
     local found_position = 0
 
@@ -32,8 +30,20 @@ luargv.get_flag_args = function(flag_name)
         local current = luargv.get_arg_by_index(i)
         local possible_flag = private_luargv.get_formmated_flag_if_its_a_flag(current)
         if possible_flag then
-            found_first = true
+            found_position = i
+            break
         end
+    end
+    local founds = {}
+    local founds_size = 0
+    for i = found_position, args_size do
+        local current = luargv.get_arg_by_index(i)
+        local possible_flag = private_luargv.get_formmated_flag_if_its_a_flag(current)
+        if possible_flag then
+            break
+        end
+        founds_size = founds_size + 1
+        founds[founds_size] = current
     end
     return founds, founds_size
 end
