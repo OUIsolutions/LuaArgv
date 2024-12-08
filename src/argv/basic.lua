@@ -8,6 +8,6 @@ private_luargv.arg_exist = function(self_obj, arg_value)
 end
 
 
-private_darwin.get_arg = function(self_obj, index)
+private_luargv.get_arg = function(self_obj, index)
     return self_obj.argslist[index]
 end
