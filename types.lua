@@ -1,10 +1,18 @@
---- you define your types here
---@class LUARGV
----@field add fun(x:number,y:number):number
----@field sub fun(x:number,y:number):number
----@field div fun(x:number,y:number):number
----@field mull fun(x:number,y:number):number
+---@class Argv
+---@field argslist string[]
+---@field arg_exist fun(arg:string):boolean
+---@field get_arg fun(index:number):string
+
+---@class PrivateArgv
+---@field arg_exist fun(self_obj:Argv,arg:string):boolean
+---@field get_arg fun(self_obj:Argv,index:number):string
+
+---@class ArgvStart
+---@field new_argv fun(args:string[]):Argv
 
 
----@type LUARGV
+---@type PrivateArgv
+private_luargv = private_luargv
+
+---@type ArgvStart
 luargv = luargv
