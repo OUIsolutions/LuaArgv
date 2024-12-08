@@ -1,9 +1,6 @@
 ---@class PrivateArgv
----@field starts_with fun(str:string,target:boolean):boolean
+---@field starts_with fun(str:string,target:string):boolean
 private_luargv.starts_with = function(str, target)
-    if luargv.substr_func == nil then
-        return false
-    end
     local target_size = luargv.get_str_size(target)
     local divided = luargv.substr_func(str, 1, target_size)
 
@@ -11,4 +8,15 @@ private_luargv.starts_with = function(str, target)
         return true
     end
     return false
+end
+---@class PrivateArgv
+---@field get_array_size fun(array:table):number
+private_luargv.get_array_size = function(array)
+    local i     = 1
+    local count = 0
+    while array[i] do
+        count = count + 1
+        i = i + 1
+    end
+    return count
 end

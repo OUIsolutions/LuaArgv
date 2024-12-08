@@ -14,22 +14,19 @@ end
 ---@class Argv
 ---@field get_total_args_size fun():number
 luargv.get_total_args_size = function()
-    if luargv.argslist == nil then
-        return 0
-    end
-
-    local i = -3
     local count = 0
-    while true do
+    for i = -3, 1000000 do
         local current = luargv.argslist[i]
         if current then
             count = count + 1
         end
+
         if i > 0 and current == nil then
             return count
         end
-        i = i + 1
     end
+
+    return 0
 end
 
 
