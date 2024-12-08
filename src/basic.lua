@@ -33,10 +33,13 @@ end
 ---@class Argv
 ---@field get_arg_by_index fun(index:number):string
 luargv.get_arg_by_index = function(index)
-    for i = 1, 1000000 do
-        local decrementer = i * -1
-        if luargv.argslist[decrementer] == nil then
-            return luargv.argslist[index + decrementer]
+    local decrementer = 0
+    for i = 0, 1000000 do
+        local converted_i = i * -1
+        if luargv.argslist[converted_i] == nil then
+            break
         end
+        decrementer = decrementer + 1
     end
+    return luargv.argslist[index - decrementer]
 end
