@@ -1,6 +1,8 @@
 darwin.add_lua_file("types.lua")
 darwin.add_lua_code("private_luargv =  {}")
 darwin.add_lua_code("luargv = {}")
+darwin.add_lua_code("private_lua_argv_string_functions = {}")
+
 local concat_path = true
 local src_files = dtw.list_files_recursively("src", concat_path)
 for i = 1, #src_files do
