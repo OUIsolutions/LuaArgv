@@ -2,10 +2,10 @@
 a single file Lua Argv lib to handle argv flags, and values
 
 ## Installation
-for installation , just donwload the [ArgvLib](https://github.com/OUIsolutions/LuaArgv/releases/download/0.01/luargv.lua)
+for installation , just donwload the [ArgvLib](https://github.com/OUIsolutions/LuaArgv/releases/download/0.02/luargv.lua)
 by typing:
 ```shell
-curl -L https://github.com/OUIsolutions/LuaArgv/releases/download/0.01/luargv.lua -o luargv.lua
+curl -L https://github.com/OUIsolutions/LuaArgv/releases/download/0.02/luargv.lua -o luargv.lua
 ```
 and than import into your lua code:
 ```lua
@@ -57,11 +57,19 @@ you can check if a flag its present our not, by:
 ```lua
 ---@type Argv
 argv = require("luargv")
-
 ---@type boolean
 local exist = argv.flags_exist({ "case_sensitive", "cs" })
 print(exist)
 ```
+
+## Getting default or first value of flag
+you can get the first value of flag, or get the default by typing
+```lua
+argv = require("luargv")
+local output = argv.get_first_flag_value_or_default({ "out" }, "a.out")
+print(output)
+```
+
 ## Compact flags
 its also possible to get comppact flags (the gcc model), witch increases
 readiability of the software:
