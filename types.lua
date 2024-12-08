@@ -1,5 +1,5 @@
 ---@type PrivateArgv
 private_luargv = private_luargv
 
----@type ArgvStart
+---@type ArgvModule
 luargv = luargv
