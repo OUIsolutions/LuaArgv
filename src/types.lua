@@ -14,7 +14,7 @@
 ---@field get_flag_size fun(flags:string[]|string):number
 ---@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string | nil):string|nil
 ---@field flags_exist fun(flags:string[]):string[],boolean
----@field arg_exist fun(arg:string):boolean
+---@field one_of_args_exist fun(arg:string[] | string):boolean
 ---@field get_total_args_size fun():number
 ---@field get_arg_by_index_not_adding_to_used fun(index:number):string
 ---@field get_compact_flags fun(flag_name:string):string[],number
