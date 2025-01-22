@@ -6,8 +6,11 @@
 
 
 ---@class Argv
----@field used_flags string[]
----@field add_used_flag fun(used_flag:string)
+---@field used_args string[]
+---@field get_unsed_arg_by_index fun(index:number):string | nil
+---@field get_total_unused_args fun():number
+---@field get_arg_by_index fun(index:number):string | nil
+---@field add_used_args_by_index fun(used_flag:string)
 ---@field get_flag_size fun(flags:string[]|string):number
 ---@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string | nil):string|nil
 ---@field flags_exist fun(flags:string[]):string[],boolean

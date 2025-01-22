@@ -3,7 +3,7 @@ luargv.arg_exist = function(arg_value)
     for i = 1, size do
         local current = luargv.get_arg_by_index_not_adding_to_used(i)
         if current == arg_value then
-            luargv.used_flags[#luargv.used_flags + 1] = current
+            luargv.add_used_args_by_index(i)
             return true
         end
     end
@@ -38,4 +38,10 @@ luargv.get_arg_by_index_not_adding_to_used = function(index)
         decrementer = decrementer + 1
     end
     return luargv.argslist[index - decrementer]
+end
+luargv.get_arg_by_index = function(index)
+    if luargv.arg_exist(index) then
+        return luargv.get_arg_by_index_not_adding_to_used(index)
+    end
+    return nil
 end

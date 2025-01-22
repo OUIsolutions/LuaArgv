@@ -68,8 +68,8 @@ luargv.get_flag_arg_by_index = function(flags, index, default)
         if capturing_flags and not possible_flag then
             total_found = total_found + 1
             if total_found == index then
-                luargv.add_used_flag_by_index(possible_flag_index)
-                luargv.add_used_flag_by_index(i)
+                luargv.add_used_args_by_index(possible_flag_index)
+                luargv.add_used_args_by_index(i)
                 return current
             end
         end
