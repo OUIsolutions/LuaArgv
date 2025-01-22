@@ -1,5 +1,3 @@
----@class PrivateArgv
----@field get_formmated_flag_if_its_a_flag fun(current_arg:string):string
 private_luargv.get_formmated_flag_if_its_a_flag = function(current_arg)
     local total_flags = private_luargv.get_array_size(luargv.flag_identifiers)
     local chose_flag_size = 0
@@ -20,8 +18,7 @@ private_luargv.get_formmated_flag_if_its_a_flag = function(current_arg)
     return nil
 end
 
----@class Argv
----@field get_flag_args fun(flags:string[]):string[],number
+
 luargv.get_flag_args = function(flags)
     local args_size = luargv.get_total_args_size()
     local founds = {}
@@ -47,8 +44,8 @@ luargv.get_flag_args = function(flags)
     return founds, founds_size
 end
 
----@class Argv
----@field flags_exist fun(flags:string[]):string[],boolean
+
+
 luargv.flags_exist = function(flags)
     local args_size = luargv.get_total_args_size()
 
@@ -64,8 +61,6 @@ luargv.flags_exist = function(flags)
     return false
 end
 
----@class Argv
----@field get_first_flag_value_or_default fun(flags:string[],default:string):string
 luargv.get_first_flag_value_or_default = function(flags, default)
     local flags, size = luargv.get_flag_args(flags)
     if size == 0 then

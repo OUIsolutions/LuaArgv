@@ -1,5 +1,3 @@
----@class Argv
----@field get_compact_flags fun(flag_name:string):string[],number
 luargv.get_compact_flags = function(flag_name)
     local founds = {}
     local founds_size = 0

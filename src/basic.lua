@@ -1,5 +1,3 @@
----@class Argv
----@field arg_exist fun(arg:string):boolean
 luargv.arg_exist = function(arg_value)
     local size = luargv.get_total_args_size()
     for i = 1, size do
@@ -11,8 +9,6 @@ luargv.arg_exist = function(arg_value)
     return false
 end
 
----@class Argv
----@field get_total_args_size fun():number
 luargv.get_total_args_size = function()
     local count = 0
     for i = -3, 1000000 do
@@ -30,8 +26,6 @@ luargv.get_total_args_size = function()
 end
 
 
----@class Argv
----@field get_arg_by_index fun(index:number):string
 luargv.get_arg_by_index = function(index)
     local decrementer = 0
     for i = 0, 1000000 do
