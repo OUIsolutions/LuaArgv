@@ -20,6 +20,10 @@ end
 
 
 luargv.get_flag_args = function(flags)
+    if luargv.type(flags) == "string" then
+        flags = { flags }
+    end
+
     local args_size = luargv.get_total_args_size()
     local founds = {}
     local founds_size = 0
@@ -62,6 +66,9 @@ luargv.flags_exist = function(flags)
 end
 
 luargv.get_first_flag_value_or_default = function(flags, default)
+    if luargv.type(flags) == "string" then
+        flags = { flags }
+    end
     local flags, size = luargv.get_flag_args(flags)
     if size == 0 then
         return default
