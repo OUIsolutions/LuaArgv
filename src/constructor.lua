@@ -1,5 +1,6 @@
 luargv.argslist = arg
 luargv.flag_identifiers = { "-", "--" }
+luargv.used_flags = {}
 if string then
     luargv.substr_func = string.sub
     luargv.get_str_size = string.len
