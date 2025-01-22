@@ -6,6 +6,7 @@
 
 
 ---@class Argv
+---@field used_flags string[]
 ---@field add_used_flag fun(used_flag:string)
 ---@field get_flag_size fun(flags:string[]|string):number
 ---@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string | nil):string|nil
