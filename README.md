@@ -52,6 +52,14 @@ it will appear these:
 test
 ```
 
+## Getting Flags Size
+```lua
+---@type Argv
+argv = require("luargv")
+local size = argv.get_flag_size({ "out", "o" })
+print(size)
+```
+
 ## Checking if a flag exist
 you can check if a flag its present our not, by:
 ```lua
@@ -82,6 +90,7 @@ if will show:
 ```txt
 test
 ```
+
 ## Configuring the project
 these lib its project to run idependent from the native lua lib, so you
 can configure , every aspect of the code
