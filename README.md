@@ -51,16 +51,6 @@ it will appear these:
 ```txt
 test
 ```
-## Get first flag
-you can get the first flag by:
-```lua
----@type Argv
-argv = require("luargv")
-local default = "test"
-local first_out_flag = argv.get_first_flag({ "out", "output", "o" }, default)
-print(first_out_flag)
-```
-the advantage of using **get_first_flag** its that even if the next flag starts with **-** it will be considered as a value, and not as a flag
 
 
 ## Getting Flags Size
