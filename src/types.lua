@@ -2,6 +2,8 @@
 ---@field get_flag_size fun(flags:string[]|string):number
 ---@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string | nil):string|nil
 ---@field flags_exist fun(flags:string[]):boolean
+---@field get_flag_size_consider_only_first fun(flags:string[]|string):number
+---@field get_flag_arg_by_index_consider_only_first fun(flags:string[]|string,index:number,default:string | nil):string|nil
 ---@field one_of_args_exist fun(arg:string[] | string):boolean
 ---@field get_total_args_size fun():number
 ---@field get_arg_by_index_not_adding_to_used fun(index:number):string

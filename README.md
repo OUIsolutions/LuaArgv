@@ -71,6 +71,27 @@ local exist = argv.flags_exist({ "case_sensitive", "cs" })
 print(exist)
 ```
 
+## Getting Flags by index Consider only the first
+Considerring only first arg of flag, can make your conde more solid, and
+easy to read:
+```lua
+---@type Argv
+argv = require("luargv")
+local index = 1
+local default = "test"
+local first_out_flag = argv.get_flag_arg_by_index_consider_only_first({ "out", "output", "o" }, index, default)
+print(first_out_flag)
+```
+
+### Getting Flags Size Consider only the first
+```lua
+---@type Argv
+argv = require("luargv")
+local size = argv.get_flag_size_consider_only_first({ "out", "o" })
+print(size)
+```
+
+
 ## Compact flags
 its also possible to get comppact flags (the gcc model), witch increases
 readiability of the software:

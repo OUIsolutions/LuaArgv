@@ -60,6 +60,6 @@ luargv.get_flag_arg_by_index_consider_only_first = function(flags, index, defaul
         ::continue::
     end
 
-    return total_found
+    return default
 end
 
