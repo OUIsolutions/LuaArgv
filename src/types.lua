@@ -2,18 +2,20 @@
 ---@field starts_with fun(str:string,target:string):boolean
 ---@field get_array_size fun(array:table):number
 ---@field is_inside fun(array:table,item:any):number
----@field get_formmated_flag_if_its_a_flag fun(current_arg:string):string
+---@field get_formmated_flag_if_its_a_flag fun(current_arg:string):string |nil
 
 
 ---@class Argv
----@field used_args string[]
+---@field used_args number[]
 ---@field get_unsed_arg_by_index fun(index:number):string | nil
+---@field get_next_unused_index fun():number|nil
+---@field get_next_unused fun():string | nil
 ---@field get_total_unused_args fun():number
 ---@field get_arg_by_index fun(index:number):string | nil
----@field add_used_args_by_index fun(used_flag:string)
+---@field add_used_args_by_index fun(used_flag:number)
 ---@field get_flag_size fun(flags:string[]|string):number
 ---@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string | nil):string|nil
----@field flags_exist fun(flags:string[]):string[],boolean
+---@field flags_exist fun(flags:string[]):boolean
 ---@field one_of_args_exist fun(arg:string[] | string):boolean
 ---@field get_total_args_size fun():number
 ---@field get_arg_by_index_not_adding_to_used fun(index:number):string
@@ -24,3 +26,9 @@
 ---@field type fun(element:any):string
 ---@field get_str_size fun(str:string):number
 ---@field flag_identifiers string[]
+
+---@type PrivateArgv
+private_luargv = private_luargv
+
+---@type Argv
+luargv = luargv
