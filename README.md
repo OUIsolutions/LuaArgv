@@ -90,6 +90,54 @@ if will show:
 ```txt
 test
 ```
+## Compact Flags size
+You also can get the compact flags size
+```lua
+argv = require("luargv")
+local conf_flags = { "conf:", "conf=" }
+local size = argv.get_compact_flags_size(conf_flags)
+for i = 1, size do
+    local current_conf = argv.get_compact_flags(conf_flags, i)
+    print("conf " .. i .. ":" .. current_conf)
+end
+```
+if you run:
+```shell
+ lua teste.lua conf=a conf:b
+```
+the output will be:
+```txt
+conf 1:b
+conf 2:a
+```
+## Unused flags
+with unsed and unused flags, you can make complex CLIS, by combining flags and args
+
+```lua
+argv = require("luargv")
+--these its required to mark as used
+argv.get_arg_by_index(1)
+argv.get_arg_by_index(2)
+local output = argv.get_flag_arg_by_index({ "out", "o" }, 1)
+if not output then
+    print("output its required")
+    return
+end
+local entry = argv.get_next_unused()
+if not entry then
+    print("entry its required")
+    return
+end
+local error_flag = argv.get_next_unused()
+if error_flag then
+    print("unused flag", error_flag)
+    return
+end
+
+print("output:", output)
+print("entry:", entry)
+
+```
 
 ## Configuring the project
 these lib its project to run idependent from the native lua lib, so you
