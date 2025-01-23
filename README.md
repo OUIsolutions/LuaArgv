@@ -2,10 +2,10 @@
 a single file Lua Argv lib to handle argv flags, and values
 
 ## Installation
-for installation , just donwload the [ArgvLib](https://github.com/OUIsolutions/LuaArgv/releases/download/0.04/luargv.lua)
+for installation , just donwload the [ArgvLib](https://github.com/OUIsolutions/LuaArgv/releases/download/0.07/luargv.lua)
 by typing:
 ```shell
-curl -L https://github.com/OUIsolutions/LuaArgv/releases/download/0.04/luargv.lua -o luargv.lua
+curl -L https://github.com/OUIsolutions/LuaArgv/releases/download/0.07/luargv.lua -o luargv.lua
 ```
 and than import into your lua code:
 ```lua
