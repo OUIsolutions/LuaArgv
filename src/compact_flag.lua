@@ -1,19 +1,26 @@
-luargv.get_compact_flags = function(flag_name)
-    local founds = {}
-    local founds_size = 0
-    local flag_size = luargv.get_str_size(flag_name)
+luargv.get_compact_flags = function(flags, index, default)
+    if luargv.type(flags) == "string" then
+        flags = { flags }
+    end
+    local total = 0
+    for i = 1, #flags do
+        local flag_name = flags[i]
+        local flag_size = luargv.get_str_size(flag_name)
+        local args_size = luargv.get_total_args_size()
+        for i = 1, args_size do
+            local current = luargv.get_arg_by_index_not_adding_to_used(i)
 
-    local args_size = luargv.get_total_args_size()
-
-    for i = 1, args_size do
-        local current = luargv.get_arg_by_index_not_adding_to_used(i)
-
-        if private_luargv.starts_with(current, flag_name) then
-            local current_size = luargv.get_str_size(current)
-            founds_size = founds_size + 1
-            local formmated = luargv.substr_func(current, flag_size + 1, current_size)
-            founds[founds_size] = formmated
+            if private_luargv.starts_with(current, flag_name) then
+                total = total + 1
+                if total == index then
+                    local current_size = luargv.get_str_size(current)
+                    local formmated = luargv.substr_func(current, flag_size + 1, current_size)
+                    luargv.add_used_args_by_index(i)
+                    return formmated
+                end
+            end
         end
     end
-    return founds, founds_size
+
+    return default
 end

@@ -17,7 +17,7 @@
 ---@field one_of_args_exist fun(arg:string[] | string):boolean
 ---@field get_total_args_size fun():number
 ---@field get_arg_by_index_not_adding_to_used fun(index:number):string
----@field get_compact_flags fun(flag_name:string):string[],number
+---@field get_compact_flags fun(flags:string[]|string,index,default:string | nil):string|nil
 ---@field argslist string[]
 ---@field decrementer number
 ---@field substr_func fun(str:string,start:number,endnum:number):string
