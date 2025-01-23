@@ -42,4 +42,5 @@ luargv.get_next_unused = function()
     if i then
         return luargv.get_arg_by_index(i)
     end
+    return nil
 end
