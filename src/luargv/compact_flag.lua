@@ -3,7 +3,7 @@ luargv.get_compact_flags = function(flags, index, default)
     if luargv.type(flags) == "string" then
         ---@type string
         flags = flags
-        converted_flags = { flags }
+        flags = { flags }
     end
 
 
