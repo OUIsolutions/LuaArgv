@@ -36,20 +36,20 @@ end
 you can get flags by:
 ```lua
 ---@type Argv
+---@type Argv
 argv = require("luargv")
-local out_flags, size = argv.get_flag_args({ "out", "output", "o" })
-for i = 1, size do
-    print(out_flags[i])
-end
+local index = 1
+local default = "test"
+local first_out_flag = argv.get_flag_arg_by_index({ "out", "output", "o" }, index, default)
+print(first_out_flag)
 ```
 if you run:
 ```shell
-lua teste.lua -out test test2
+lua teste.lua -out test
 ```
 it will appear these:
 ```txt
 test
-test2
 ```
 
 ## Checking if a flag exist
@@ -62,14 +62,6 @@ local exist = argv.flags_exist({ "case_sensitive", "cs" })
 print(exist)
 ```
 
-## Getting default or first value of flag
-you can get the first value of flag, or get the default by typing
-```lua
-argv = require("luargv")
-local output = argv.get_first_flag_value_or_default({ "out" }, "a.out")
-print(output)
-```
-
 ## Compact flags
 its also possible to get comppact flags (the gcc model), witch increases
 readiability of the software:
@@ -77,20 +69,18 @@ readiability of the software:
 ```lua
 ---@type Argv
 argv = require("luargv")
-
-confs, size = argv.get_compact_flags("conf:")
-for i = 1, size do
-    print(confs[i])
-end
+local index = 1
+local default = "my default conf"
+local first_conf = argv.get_compact_flags({ "conf:", "conf=" }, index, default)
+print(first_conf)
 ```
 if you run:
 ```shell
-lua teste.lua conf:test a b conf:test2
+lua teste.lua conf:test a b
 ```
 if will show:
 ```txt
 test
-test2
 ```
 ## Configuring the project
 these lib its project to run idependent from the native lua lib, so you
