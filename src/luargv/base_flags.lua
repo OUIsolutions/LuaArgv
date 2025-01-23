@@ -1,5 +1,3 @@
----@class Argv
----@field get_flag_size fun(flags:string[]|string):number
 luargv.get_flag_size = function(flags)
     if luargv.type(flags) == "string" then
         flags = { flags }
@@ -26,8 +24,6 @@ luargv.get_flag_size = function(flags)
     return total_found
 end
 
----@class Argv
----@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string | nil):string|nil
 luargv.get_flag_arg_by_index = function(flags, index, default)
     if luargv.type(flags) == "string" then
         flags = { flags }
@@ -51,7 +47,9 @@ luargv.get_flag_arg_by_index = function(flags, index, default)
         if capturing_flags and not possible_flag then
             total_found = total_found + 1
             if total_found == index then
-                luargv.add_used_args_by_index(possible_flag_index)
+                if possible_flag_index then
+                    luargv.add_used_args_by_index(possible_flag_index)
+                end
                 luargv.add_used_args_by_index(i)
                 return current
             end
@@ -62,8 +60,6 @@ luargv.get_flag_arg_by_index = function(flags, index, default)
 end
 
 
----@class Argv
----@field flags_exist fun(flags:string[]):boolean
 luargv.flags_exist = function(flags)
     local args_size = luargv.get_total_args_size()
 

@@ -1,5 +1,3 @@
----@class Argv
----@field get_compact_flags fun(flags:string[]|string,index,default:string | nil):string|nil
 luargv.get_compact_flags = function(flags, index, default)
     local converted_flags = flags
     if luargv.type(flags) == "string" then
@@ -32,8 +30,6 @@ luargv.get_compact_flags = function(flags, index, default)
     return default
 end
 
----@class Argv
----@field get_compact_flags_size fun(flags:string[]|string):number
 luargv.get_compact_flags_size = function(flags)
     local converted_flags = flags
     if luargv.type(flags) == "string" then

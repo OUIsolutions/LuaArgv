@@ -1,5 +1,3 @@
----@class Argv
----@field add_used_args_by_index fun(used_flag:number)
 luargv.add_used_args_by_index = function(index)
     if index > luargv.get_total_args_size() then
         return
@@ -10,14 +8,10 @@ luargv.add_used_args_by_index = function(index)
     end
 end
 
----@class Argv
----@field get_total_unused_args fun():number
 luargv.get_total_unused_args = function()
     return luargv.get_total_args_size() - #luargv.used_args
 end
 
----@class Argv
----@field get_unsed_arg_by_index fun():number|nil
 luargv.get_unsed_arg_by_index = function(index)
     local total       = 0
     local total_flags = luargv.get_total_args_size()
@@ -32,8 +26,6 @@ luargv.get_unsed_arg_by_index = function(index)
     return nil
 end
 
----@class Argv
----@field get_next_unused_index fun():number|nil
 luargv.get_next_unused_index = function()
     local total_flags = luargv.get_total_args_size()
     for i = 1, total_flags do
@@ -45,8 +37,6 @@ luargv.get_next_unused_index = function()
 end
 
 
----@class Argv
----@field get_next_unused fun():string
 luargv.get_next_unused = function()
     local i = luargv.get_next_unused_index()
     if i then

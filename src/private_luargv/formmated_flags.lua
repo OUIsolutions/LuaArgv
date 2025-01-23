@@ -1,5 +1,3 @@
----@class PrivateArgv
----@field get_formmated_flag_if_its_a_flag fun(current_arg:string):string |nil
 private_luargv.get_formmated_flag_if_its_a_flag = function(current_arg)
     local total_flags = private_luargv.get_array_size(luargv.flag_identifiers)
     local chose_flag_size = 0
