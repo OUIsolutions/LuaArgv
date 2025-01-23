@@ -1,3 +1,5 @@
+---@class Argv
+---@field one_of_args_exist fun(arg:string[] | string):boolean
 luargv.one_of_args_exist = function(args_list)
     if luargv.type(args_list) == "string" then
         args_list = { args_list }
@@ -16,6 +18,8 @@ luargv.one_of_args_exist = function(args_list)
     end
 end
 
+---@class Argv
+---@field get_total_args_size fun():number
 luargv.get_total_args_size = function()
     local count = 0
     for i = -3, 1000000 do
@@ -32,7 +36,8 @@ luargv.get_total_args_size = function()
     return 0
 end
 
-
+---@class Argv
+---@field get_arg_by_index_not_adding_to_used fun(index:number):string
 luargv.get_arg_by_index_not_adding_to_used = function(index)
     local decrementer = 0
     for i = 0, 1000000 do
@@ -44,6 +49,9 @@ luargv.get_arg_by_index_not_adding_to_used = function(index)
     end
     return luargv.argslist[index - decrementer]
 end
+
+---@class Argv
+---@field get_arg_by_index fun(index:number):string | nil
 luargv.get_arg_by_index = function(index)
     luargv.add_used_args_by_index(index)
     return luargv.get_arg_by_index_not_adding_to_used(index)

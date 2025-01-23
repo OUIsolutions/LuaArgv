@@ -1,4 +1,3 @@
-darwin.add_lua_file("types.lua")
 darwin.add_lua_code("private_luargv =  {}")
 darwin.add_lua_code("luargv = {}")
 darwin.add_lua_code("private_lua_argv_string_functions = {}")
