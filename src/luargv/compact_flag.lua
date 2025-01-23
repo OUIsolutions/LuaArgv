@@ -33,9 +33,8 @@ end
 luargv.get_compact_flags_size = function(flags)
     local converted_flags = flags
     if luargv.type(flags) == "string" then
-        ---@type string
-        flags = flags
-        converted_flags = { flags }
+     
+        flags = { flags }
     end
     local total = 0
     for i = 1, #flags do
