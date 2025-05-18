@@ -70,6 +70,7 @@ luargv.flags_exist = function(flags)
         local possible_flag = private_luargv.get_formmated_flag_if_its_a_flag(current)
         if possible_flag then
             if private_luargv.is_inside(flags, possible_flag) then
+                luargv.add_used_args_by_index(i)
                 return true
             end
         end
