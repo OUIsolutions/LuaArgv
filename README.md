@@ -15,10 +15,10 @@ argv = require("luargv")
 ```
 ## Building from scratch
 if you want to build from scracth ,you will need [Darwin](https://github.com/OUIsolutions/Darwin),
-installed on your machine, on version [0.15](https://github.com/OUIsolutions/Darwin/releases/tag/0.015).
+installed on your machine, on version [0.2.1](https://github.com/OUIsolutions/Darwin/releases/tag/0.2.1).
 Then clone these repo, and run:
 ```shell
-./darwin.out build
+darwin run_blueprint
 ```
 
 ## Getting  normal args
