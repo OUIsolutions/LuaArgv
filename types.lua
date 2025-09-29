@@ -1,54 +1,39 @@
 -- ############################################
--- Tipos públicos da biblioteca LuaArgv
+-- Public types for the LuaArgv library
 -- ############################################
 
 ---@class Argv
----@field argslist string[] Lista completa de argumentos recebidos da linha de comando
----@field used_args number[] Índices de argumentos já utilizados
----@field flag_identifiers string[] Identificadores reconhecidos como flags (ex: {"-", "--"})
+---@field argslist string[] Complete list of command-line arguments
+---@field used_args number[] Indices of arguments that have been used
+---@field flag_identifiers string[] Identifiers recognized as flags (e.g., {"-", "--"})
 ---
----@field get_flag_size fun(flags:string[]|string):number Retorna a quantidade de valores associados a uma flag
----@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string|nil):string|nil Retorna o valor da flag pelo índice
----@field flags_exist fun(flags:string[]):boolean Verifica se uma das flags existe
----@field get_flag_size_consider_only_first fun(flags:string[]|string):number Retorna o número de ocorrências considerando apenas a primeira flag
----@field get_flag_arg_by_index_consider_only_first fun(flags:string[]|string,index:number,default:string|nil):string|nil Retorna argumento da primeira ocorrência da flag
----@field one_of_args_exist fun(arg:string[]|string):boolean Verifica se um dos argumentos existe
----@field get_total_args_size fun():number Retorna o número total de argumentos
----@field get_arg_by_index fun(index:number):string|nil Retorna argumento pelo índice
----@field get_arg_by_index_not_adding_to_used fun(index:number):string Retorna argumento sem marcar como usado
----@field get_compact_flags fun(flags:string[]|string,index:number,default:string|nil):string|nil Obtém valores de flags compactas (ex: -abc)
----@field get_compact_flags_size fun(flags:string[]|string):number Retorna quantidade de flags compactas
----@field add_used_args_by_index fun(used_flag:number) Marca argumento como usado
----@field get_total_unused_args fun():number Retorna número de argumentos não usados
----@field get_unsed_arg_by_index fun(index:number):string|nil Retorna argumento não usado pelo índice
----@field get_next_unused_index fun():number|nil Retorna índice do próximo argumento não usado
----@field get_next_unused fun():string|nil Retorna próximo argumento não usado
----@field type fun(value:any):string Retorna tipo de um valor
----@field substr_func fun(str:string,start:number,endnum:number):string Substring de uma string
----@field get_str_size fun(str:string):number Retorna tamanho de uma string
+---@field get_flag_size fun(flags:string[]|string):number Returns the number of values associated with a flag
+---@field get_flag_arg_by_index fun(flags:string[]|string,index:number,default:string|nil):string|nil Returns the flag value by index
+---@field flags_exist fun(flags:string[]):boolean Checks if any of the flags exist
+---@field get_flag_size_consider_only_first fun(flags:string[]|string):number Returns the number of occurrences considering only the first flag
+---@field get_flag_arg_by_index_consider_only_first fun(flags:string[]|string,index:number,default:string|nil):string|nil Returns the argument for the first occurrence of the flag
+---@field one_of_args_exist fun(arg:string[]|string):boolean Checks if one of the arguments exists
+---@field get_total_args_size fun():number Returns the total number of arguments
+---@field get_arg_by_index fun(index:number):string|nil Returns argument by index
+---@field get_arg_by_index_not_adding_to_used fun(index:number):string Returns argument without marking it as used
+---@field get_compact_flags fun(flags:string[]|string,index:number,default:string|nil):string|nil Gets values of compact flags (e.g., -abc)
+---@field get_compact_flags_size fun(flags:string[]|string):number Returns the number of compact flags
+---@field add_used_args_by_index fun(used_flag:number) Marks an argument as used
+---@field get_total_unused_args fun():number Returns the number of unused arguments
+---@field get_unsed_arg_by_index fun(index:number):string|nil Returns unused argument by index
+---@field get_next_unused_index fun():number|nil Returns the index of the next unused argument
+---@field get_next_unused fun():string|nil Returns the next unused argument
+---@field type fun(value:any):string Returns the type of a value
+---@field substr_func fun(str:string,start:number,endnum:number):string Returns a substring of a string
+---@field get_str_size fun(str:string):number Returns the length of a string
 
 ---@type Argv
 luargv = luargv
 
 
 -- ############################################
--- Tipos privados (internos da biblioteca)
--- ############################################
-
----@class PrivateArgv
----@field starts_with fun(str:string,target:string):boolean Verifica se uma string começa com determinado prefixo
----@field get_array_size fun(array:table):number Retorna o tamanho de um array
----@field is_inside fun(array:table,item:any):boolean Verifica se um item está dentro de um array
----@field get_formmated_flag_if_its_a_flag fun(current_arg:string):string|nil Formata e valida argumento como flag
-
----@type PrivateArgv
-private_luargv = private_luargv
-
-
--- ############################################
--- Interface principal
+-- Main interface
 -- ############################################
 
 ---@class LuaArgvModule
----@field argv Argv API pública para manipulação de argumentos
----@field _private PrivateArgv Funções internas (uso não recomendado para usuários finais)
+---@field argv Argv Public API to handle command-line arguments
